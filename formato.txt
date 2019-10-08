@@ -1,0 +1,8 @@
+Formación Académica: cod, titulo, institución, trabajo_grado
+Reconocimientos: cod, textualmente
+Eventos científicos: nombre, fecha, ciudad_y_sitio, productos[0].nombre, institucion[0].nombre
+Artículos: autores, país, revista, editorial, ISSN, páginas, fecha, DOI
+Publicaciones { libros, capítulos de libros, softwares, ...
+Otros trabajos { demás ~, obras o productos
+Registros de acuerdo de licencia
+Proyecto: nombre, fecha
