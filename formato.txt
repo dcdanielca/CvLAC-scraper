@@ -1,8 +1,22 @@
 Formación Académica: cod, titulo, institución, trabajo_grado
 Reconocimientos: cod, textualmente
-Eventos científicos: nombre, fecha, ciudad_y_sitio, productos[0].nombre, institucion[0].nombre
-Artículos: autores, país, revista, editorial, ISSN, páginas, fecha, DOI
-Publicaciones { libros, capítulos de libros, softwares, ...
-Otros trabajos { demás ~, obras o productos
-Registros de acuerdo de licencia
-Proyecto: nombre, fecha
+Eventos científicos: nombre, fecha, lugar, productos_asoc[0].nombre, instituciones_asoc[0].nombre
+Artículos: autores, nombre, país, revista, editorial, ISSN, editorial, versión (+fascículo}, páginas, año, DOI
+Publicaciones {
+    libros {
+        autores, nombre, país, año, editorial, ISBN, versión, páginas, 
+    },
+    capítulos de libro {
+        autores, nombre, país, ISBN, editorial, versión, páginas, año
+    },
+    demás trabajos {
+        autores, nombre, país, año, finalidad
+    },
+    textos en publicaciones no científicas {
+        autores, nombre, país, año, revista, issn, páginas, versión
+    }
+Softwares {
+    autores, nombre, registro, país, año, plataforma
+}
+Obras o productos: nombre, disciplina, fecha, instancias[0].(nombre, fecha, entidad)
+Proyecto: tipo, nombre, periodo
