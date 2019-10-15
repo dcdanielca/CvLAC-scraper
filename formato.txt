@@ -1,7 +1,7 @@
 Formación Académica: cod, titulo, institución, trabajo_grado
 Reconocimientos: cod, textualmente
 Eventos científicos: nombre, fecha, lugar, productos_asoc[0].nombre, instituciones_asoc[0].nombre
-Artículos: autores, nombre, país, revista, editorial, ISSN, editorial, versión (+fascículo}, páginas, año, DOI
+Artículos: autores, nombre, país, revista, ISSN, editorial, versión (+fascículo}, páginas, año, DOI
 Publicaciones {
     libros {
         autores, nombre, país, año, editorial, ISBN, versión, páginas, 
