@@ -4,7 +4,8 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 
-def parsear(url):
+def parsear(cod_rh):
+    url = f'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh={cod_rh}'
     with urlopen(url) as respuesta:
         # TODO: usar un parser más rápido
         soup = BeautifulSoup(respuesta, 'html.parser')
@@ -63,12 +64,13 @@ def parsear_reconocimientos(soup):
         <tr><td><li>Primer puesto conjunto instrumental,...<li></td></tr>
         ...
     """
-    return [li.get_text() for li in (soup.find(string='Reconocimientos')
+    return [li.get_text() for li in (soup.find('h3', string='Reconocimientos')
                                          .find_parent('table')
                                          .find_all('li'))]
 
 
 def parsear_eventos(soup):
+    eventos = []
     """
     <a name="evento"></a>
     <table>
@@ -115,7 +117,6 @@ def parsear_eventos(soup):
         </table>
         ...
     """
-    eventos = []
     for table in (soup.find(attrs={'name': 'evento'})
                       .find_next_sibling('table')
                       .find_all('table')):
@@ -385,8 +386,6 @@ def parsear_textos_pubs_no_cientificas(soup):
 
 if __name__ == '__main__':
     cods_rh = ['0000419109', '0000189758']
-    url = ('http://scienti.colciencias.gov.co:8081/cvlac/visualizador/'
-           'generarCurriculoCv.do?cod_rh={}')
-    curriculums = {cod_rh: parsear(url.format(cod_rh)) for cod_rh in cods_rh}
+    curriculums = {cod_rh: parsear(cod_rh) for cod_rh in cods_rh}
     with open('curriculums.json', 'wt') as f:
         json.dump(curriculums, f)

@@ -1,22 +1,13 @@
-Formación Académica: cod, titulo, institución, trabajo_grado
-Reconocimientos: cod, textualmente
+Formación académica: título, institución, periodo, trabajo de grado
+Reconocimientos: textualmente
 Eventos científicos: nombre, fecha, lugar, productos_asoc[0].nombre, instituciones_asoc[0].nombre
-Artículos: autores, nombre, país, revista, ISSN, editorial, versión (+fascículo}, páginas, año, DOI
-Publicaciones {
-    libros {
-        autores, nombre, país, año, editorial, ISBN, versión, páginas, 
-    },
-    capítulos de libro {
-        autores, nombre, país, ISBN, editorial, versión, páginas, año
-    },
-    demás trabajos {
-        autores, nombre, país, año, finalidad
-    },
-    textos en publicaciones no científicas {
-        autores, nombre, país, año, revista, issn, páginas, versión
-    }
-Softwares {
-    autores, nombre, registro, país, año, plataforma
+Artículos: autores, título, país, revista, ISSN, editorial, versión (+fascículo), páginas, año, DOI
+Publicaciones: {
+    Libros: autores, título, país, año, editorial, ISBN, versión, páginas
+    Capítulos de libro: autores, título, país, ISBN, editorial, versión, páginas, año
+    Demás trabajos: autores, título, país, año, finalidad
+    Textos en publicaciones no científicas: autores, título, país, año, revista, ISSN, páginas, versión
 }
+Softwares: autores, nombre, registro, país, año, plataforma
 Obras o productos: nombre, disciplina, fecha, instancias[0].(nombre, fecha, entidad)
-Proyecto: tipo, nombre, periodo
+Proyecto: tipo, título, periodo
