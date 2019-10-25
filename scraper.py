@@ -234,8 +234,8 @@ def parsear_publicaciones(soup):
     return {
         #'libros': parsear_libros(soup),
         #'capitulos_libros': parsear_capitulos_libros(soup),
-        'demas_trabajos': parsear_demas_trabajos(soup),
-        #'textos_pubs_no_cientificas': parsear_textos_pubs_no_cientificas(soup),
+        #'demas_trabajos': parsear_demas_trabajos(soup),
+        'textos_pubs_no_cientificas': parsear_textos_pubs_no_cientificas(soup),
     }
 
 
@@ -381,7 +381,56 @@ def parsear_demas_trabajos(soup):
 
 
 def parsear_textos_pubs_no_cientificas(soup):
-    return []
+    textos = []
+    """
+    <table>
+        <tr><td><h3 id="textos"></h3></td></tr>
+        ...
+        <tr><td><blockquote>
+            FELIPE CESAR LONDONO LOPEZ,
+            ...
+        </blockquote></td></tr>
+        ...
+    """
+    for bq in (soup.find('h3', id='textos')
+                   .find_parent('table')
+                   .find_all('blockquote')):
+        lineas = _split_strip_lines(bq.get_text())
+        """
+        lineas = [
+            'FELIPE CESAR LONDONO LOPEZ,',
+            '"Diseño, arte y tecnología"',
+            'En: Colombia.',
+            '2010.',
+            'Facultad Para Educar.',
+            'ISSN:\xa01794-9858',
+            'p.4',
+            '- 9',
+            'v.18',
+            'Palabras:',
+            'Diseño,',
+            'Tecnologías,',
+            'Arte Digital,',
+            'Arte y nuevos medios,',
+            'Areas:',
+            'Humanidades -- Otras Humanidades -- Otras Humanidades,'
+        ]"""
+        i_titulo, titulo = _parsear_campo(lineas, prefijo='"', con_indice=True)
+        i_pais, pais = _parsear_campo(lineas, prefijo='En: ', con_indice=True)
+        i_pags0, pags0 = _parsear_campo(lineas, prefijo='p.', con_indice=True)
+        textos.append({
+            # TODO: dejar como lista?
+            'autores': ''.join(lineas[:i_titulo]).rstrip(','),
+            'titulo': titulo.strip('"'),
+            'pais': pais.rstrip('.'),
+            'año': int(lineas[i_pais + 1].rstrip('.')),
+            'revista': lineas[i_pais + 2].rstrip('.'),
+            'ISSN': _parsear_campo(lineas, prefijo='ISSN:'),
+            'paginas': f'{pags0 or ""} - {lineas[i_pags0 + 1].lstrip("- ")}',
+            # TODO: convertir a número?
+            'version': _parsear_campo(lineas, prefijo='v.'),
+        })
+    return textos
 
 
 if __name__ == '__main__':
