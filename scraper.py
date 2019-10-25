@@ -3,23 +3,30 @@ from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
 
+try:
+    from tqdm import tqdm
+except ImportError:
+    tqdm = iter
 
-def parsear(cod_rh):
+
+def extraer_curriculum(cod_rh):
     url = f'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh={cod_rh}'
     with urlopen(url) as respuesta:
         # TODO: usar un parser más rápido
         soup = BeautifulSoup(respuesta, 'html.parser')
         return {
-            #'formacion_academica': parsear_formacion_academica(soup),
-            #'reconocimientos': parsear_reconocimientos(soup),
-            #'eventos': parsear_eventos(soup),
-            #'articulos': parsear_articulos(soup),
-            'publicaciones': parsear_publicaciones(soup),
+            'formacion_academica': extraer_formacion_academica(soup),
+            'reconocimientos': extraer_reconocimientos(soup),
+            'eventos_cientificos': extraer_eventos_cientificos(soup),
+            'articulos': extraer_articulos(soup),
+            'publicaciones': extraer_publicaciones(soup),
+            'softwares': extraer_softwares(soup),
+            'obras_productos': extraer_obras_productos(soup),
+            'proyectos': extraer_proyectos(soup),
         }
 
 
-def parsear_formacion_academica(soup):
-    formacion_acad = []
+def extraer_formacion_academica(soup):
     """
     <a name="formacion_acad"></a>
     <table>
@@ -36,6 +43,7 @@ def parsear_formacion_academica(soup):
         </td>
         ...
     """
+    formacion_acad = []
     for b in (soup.find(attrs={'name': 'formacion_acad'})
                   .find_next_sibling('table')
                   .find_all('b')):
@@ -45,7 +53,7 @@ def parsear_formacion_academica(soup):
             1: 'UNIVERSIDAD DE CALDAS',
             2: 'Doctorado en Diseño y Creación',
             3: 'Juliode2011 - Agostode 2017',
-            4?: 'Interfaz Cerebro Ordenador para la Creación a través del...',
+            4?: 'Interfaz Cerebro Ordenador para la Creación a...',
         ]"""
         formacion_acad.append({
             'titulo': strs[2],
@@ -56,12 +64,12 @@ def parsear_formacion_academica(soup):
     return formacion_acad
 
 
-def parsear_reconocimientos(soup):
+def extraer_reconocimientos(soup):
     """
     <table>
         <tr><td><h3>Reconocimientos</h3></td></tr>
-        <tr><td><li>Gran premio,Festival Mono Nuñez - de 1993</li></td></tr>
-        <tr><td><li>Primer puesto conjunto instrumental,...<li></td></tr>
+        <tr><td><li>Gran premio,Festival Mono Nuñez...</li></td></tr>
+        <tr><td><li>Primer puesto conjunto...<li></td></tr>
         ...
     """
     return [li.get_text() for li in (soup.find('h3', string='Reconocimientos')
@@ -69,8 +77,7 @@ def parsear_reconocimientos(soup):
                                          .find_all('li'))]
 
 
-def parsear_eventos(soup):
-    eventos = []
+def extraer_eventos_cientificos(soup):
     """
     <a name="evento"></a>
     <table>
@@ -89,8 +96,8 @@ def parsear_eventos(soup):
                 <b>Productos asociados</b><br>
                 <ul>
                     <li>
-                        <i>Nombre del producto:</i>Diseño de indicadores...
-                        <i>Tipo de producto:</i>Producción bibliográfica...
+                        <i>Nombre del producto:</i>Diseño de...
+                        <i>Tipo de producto:</i>Producción...
                     </li>
                 </ul>
             </td></tr>
@@ -98,7 +105,7 @@ def parsear_eventos(soup):
                 <b>Instituciones asociadas</b><br>
                 <ul>
                     <li>
-                        <i>Nombre de la instituci&oacute;n:</i>UNIVERSIDAD...
+                        <i>Nombre de la instituci&oacute;n:</i>UNIVER...
                         <i>Tipo de vinculaci&oacute;n</i>Patrocinadora
                     </li>
                 </ul>
@@ -117,10 +124,11 @@ def parsear_eventos(soup):
         </table>
         ...
     """
+    eventos = []
     for table in (soup.find(attrs={'name': 'evento'})
                       .find_next_sibling('table')
                       .find_all('table')):
-        fecha, lugar = _parsear_fecha_lugar_evento(table)
+        fecha, lugar = _extraer_fecha_lugar_evento(table)
         i_producto_asoc = table.find('i', string='Nombre del producto:')
         i_institucion_asoc = table.find('i',string='Nombre de la institución:')
         eventos.append({
@@ -138,7 +146,7 @@ def parsear_eventos(soup):
     return eventos
 
 
-def _parsear_fecha_lugar_evento(table):
+def _extraer_fecha_lugar_evento(table):
     prefijo_fecha = 'Realizado el:'
     fecha_lugar = (
         table.find('i', string=(lambda s: s.startswith(prefijo_fecha)))
@@ -153,8 +161,7 @@ def _parsear_fecha_lugar_evento(table):
     return (fecha, lugar) if lugar != ' -' else (fecha, None)
 
 
-def parsear_articulos(soup):
-    articulos = []
+def extraer_articulos(soup):
     """
     <a name="articulos"></a>
     <table>
@@ -167,6 +174,7 @@ def parsear_articulos(soup):
         <blockquote>
             ...
     """
+    articulos = []
     for bq in (soup.find(attrs={'name': 'articulos'})
                    .find_next_sibling('table')
                    .find_all('blockquote')):
@@ -175,11 +183,11 @@ def parsear_articulos(soup):
             'FELIPE CESAR LONDONO LOPEZ,',
             'JOSEP MARIA MONGUET F,',
             'CARLOS ANDRES CORDOBA CELY,',
-            '"Análisis de Cocitación de Autor en el Modelo de Aceptación..."',
+            '"Análisis de Cocitación de Autor en el Modelo de..."',
             '. En: España',
             'Revista Espanola de Documentacion Cientifica',
             'ISSN:\xa00210-0614',
-            'ed:\xa0Consejo superior de investigaciones científicas de Madrid',
+            'ed:\xa0Consejo superior de investigaciones científicas...',
             'v.35',
             'fasc.2',
             'p.238',
@@ -191,11 +199,11 @@ def parsear_articulos(soup):
             'visualización de dominios de conocimiento,',
             'redes Pathfinder,'
         ]"""
-        i_titulo, titulo = _parsear_campo(lineas, prefijo='"', con_indice=True)
-        i_pais, pais = _parsear_campo(lineas, prefijo='. En: ',con_indice=True)
+        i_titulo, titulo = _extraer_campo(lineas, prefijo='"', con_indice=True)
+        i_pais, pais = _extraer_campo(lineas, prefijo='. En:',con_indice=True)
         revista = (lineas[i_pais + 1]
                    if not lineas[i_pais + 1].startswith('ISSN:') else None)
-        pags, año = _parsear_pags_año(
+        pags, año = _extraer_pags_año(
             lineas, prefijo_pags0='p.', año_vacio=',,')
         articulos.append({
             # TODO: dejar como lista?
@@ -203,12 +211,12 @@ def parsear_articulos(soup):
             'titulo': titulo.strip('"'),
             'pais': pais,
             'revista': revista,
-            'ISSN': _parsear_campo(lineas, prefijo='ISSN:'),
-            'editorial': _parsear_campo(lineas, prefijo='ed:'),
-            'version': _parsear_version_articulo(lineas),
+            'ISSN': _extraer_campo(lineas, prefijo='ISSN:'),
+            'editorial': _extraer_campo(lineas, prefijo='ed:'),
+            'version': _extraer_version_articulo(lineas),
             'paginas': pags,
             'año': año,
-            'DOI': _parsear_campo(lineas, prefijo='DOI:'),
+            'DOI': _extraer_campo(lineas, prefijo='DOI:'),
         })
     return articulos
 
@@ -217,30 +225,29 @@ def _split_strip_lines(str_):
     return list(filter(None, (linea.strip() for linea in str_.splitlines())))
 
 
-def _parsear_campo(lineas, prefijo, con_indice=False):
+def _extraer_campo(lineas, prefijo, con_indice=False):
     indice, campo = next(
-        (i, (linea[len(prefijo):].lstrip() or None))
+        (i, (linea[len(prefijo):].lstrip().rstrip(',.') or None))
         for (i, linea) in enumerate(lineas) if linea.startswith(prefijo))
     return (indice, campo) if con_indice else campo
 
 
-def _parsear_version_articulo(lineas):
+def _extraer_version_articulo(lineas):
     return 'v.{} fasc.{}'.format(
-        _parsear_campo(lineas, prefijo='v.') or 'N/A',
-        _parsear_campo(lineas, prefijo='fasc.') or 'N/A')
+        _extraer_campo(lineas, prefijo='v.') or 'N/A',
+        _extraer_campo(lineas, prefijo='fasc.') or 'N/A')
 
 
-def parsear_publicaciones(soup):
+def extraer_publicaciones(soup):
     return {
-        #'libros': parsear_libros(soup),
-        #'capitulos_libros': parsear_capitulos_libros(soup),
-        #'demas_trabajos': parsear_demas_trabajos(soup),
-        'textos_pubs_no_cientificas': parsear_textos_pubs_no_cientificas(soup),
+        'libros': extraer_libros(soup),
+        'capitulos_libros': extraer_capitulos_libros(soup),
+        'demas_trabajos': extraer_demas_trabajos(soup),
+        'textos_pubs_no_cientificas': extraer_textos_pubs_no_cientificas(soup),
     }
 
 
-def parsear_libros(soup):
-    libros = []
+def extraer_libros(soup):
     """
     <a name="libros"></a>
     <table>
@@ -253,6 +260,7 @@ def parsear_libros(soup):
         <blockquote>
             ...
     """
+    libros = []
     for bq in (soup.find(attrs={'name': 'libros'})
                    .find_next_sibling('table')
                    .find_all('blockquote')):
@@ -270,31 +278,30 @@ def parsear_libros(soup):
             'música colombiana,',
             'cuerdas típicas,',
             'Areas:',
-            'Humanidades -- Arte -- Teatro, dramaturgia o artes escénicas,',
+            'Humanidades -- Arte -- Teatro, dramaturgia o artes...,',
             'Sectores:',
-            'Edición, impresión, reproducción y grabación industriales de...',
-            'Productos y servicios de recreación,culturales, artísticos y...'
+            'Edición, impresión, reproducción y grabación...',
+            'Productos y servicios de recreación,culturales, ...'
         ]"""
-        i_titulo, titulo = _parsear_campo(lineas, prefijo='"', con_indice=True)
-        i_pais, pais = _parsear_campo(lineas, prefijo='En: ', con_indice=True)
-        str_pags = _parsear_campo(lineas, prefijo='pags.')
+        i_titulo, titulo = _extraer_campo(lineas, prefijo='"', con_indice=True)
+        i_pais, pais = _extraer_campo(lineas, prefijo='En:', con_indice=True)
+        str_pags = _extraer_campo(lineas, prefijo='pags.')
         libros.append({
             # TODO: dejar como lista?
             'autores': ''.join(lineas[:i_titulo]).rstrip(','),
             'titulo': titulo.strip('"'),
             'pais': pais,
             'año': int(lineas[i_pais + 1].rstrip('.')),
-            'editorial': _parsear_campo(lineas, prefijo='ed:'),
-            'ISBN': _parsear_campo(lineas, prefijo='ISBN:'),
+            'editorial': _extraer_campo(lineas, prefijo='ed:'),
+            'ISBN': _extraer_campo(lineas, prefijo='ISBN:'),
             # TODO: convertir a número?
-            'version': _parsear_campo(lineas, prefijo='v.'),
+            'version': _extraer_campo(lineas, prefijo='v.'),
             'paginas': int(str_pags) if str_pags else None,
         })
     return libros
 
 
-def parsear_capitulos_libros(soup):
-    capitulos = []
+def extraer_capitulos_libros(soup):
     """
     <a name="capitulos"></a>
     <table>
@@ -307,6 +314,7 @@ def parsear_capitulos_libros(soup):
         <blockquote>
             ...
     """
+    capitulos = []
     for bq in (soup.find(attrs={'name': 'capitulos'})
                    .find_next_sibling('table')
                    .find_all('blockquote')):
@@ -319,7 +327,7 @@ def parsear_capitulos_libros(soup):
             'Tipo: Otro capítulo de libro publicado',
             'MARIO H VALENCIA G,',
             '"Interacción, espacio público y nuevas tecnologías"',
-            'Diseño + Segundo Encuentro Nacional De Investigacion En Diseño',
+            'Diseño + Segundo Encuentro Nacional De Investigacion...',
             '. En: Colombia',
             'ISBN:\xa0958-9279-85-6',
             'ed:\xa0Universidad Icesi',
@@ -335,39 +343,39 @@ def parsear_capitulos_libros(soup):
             'Espacio Público,',
             'Nuavas tecnologías,',
             'Areas:',
-            'Ciencias Sociales -- Ciencias de la Educación -- Educación...',
+            'Ciencias Sociales -- Ciencias de la Educación...',
             'Humanidades -- Idiomas y Literatura -- Lingüística,',
-            'Ciencias Sociales -- Periodismo y Comunicaciones -- Medios y...'
+            'Ciencias Sociales -- Periodismo y Comunicaciones...'
         ]"""
-        i_titulo_capitulo, titulo_capitulo = _parsear_campo(
+        i_titulo_capitulo, titulo_capitulo = _extraer_campo(
             lineas, prefijo='"', con_indice=True)
-        pags, año = _parsear_pags_año(
+        pags, año = _extraer_pags_año(
             lineas, prefijo_pags0=', p.', año_vacio=',')
         capitulos.append({
-            'autores': _parsear_autores_capitulos(lineas, i_titulo_capitulo),
+            'autores': _extraer_autores_capitulos(lineas, i_titulo_capitulo),
             'titulo_capitulo': titulo_capitulo.strip('"'),
             'titulo_libro': lineas[i_titulo_capitulo + 1],
-            'pais': _parsear_campo(lineas, prefijo='. En:'),
-            'ISBN': _parsear_campo(lineas, prefijo='ISBN:'),
-            'editorial': _parsear_campo(lineas, prefijo='ed:'),
+            'pais': _extraer_campo(lineas, prefijo='. En:'),
+            'ISBN': _extraer_campo(lineas, prefijo='ISBN:'),
+            'editorial': _extraer_campo(lineas, prefijo='ed:'),
             # TODO: convertir a número?
-            'version': _parsear_campo(lineas, prefijo=', v.'),
+            'version': _extraer_campo(lineas, prefijo=', v.'),
             'paginas': pags,
             'año': año,
         })
     return capitulos
 
 
-def _parsear_autores_capitulos(lineas, i_titulo_capitulo):
+def _extraer_autores_capitulos(lineas, i_titulo_capitulo):
     # TODO: dejar como lista?
     return (''.join(linea for linea in lineas[:i_titulo_capitulo]
                     if not linea.startswith('Tipo:'))
               .rstrip(','))
 
 
-def _parsear_pags_año(lineas, prefijo_pags0, año_vacio):
+def _extraer_pags_año(lineas, prefijo_pags0, año_vacio):
     """Para artículos y capítulos de libros."""
-    i_pags0, pags0 = _parsear_campo(lineas, prefijo_pags0, con_indice=True)
+    i_pags0, pags0 = _extraer_campo(lineas, prefijo_pags0, con_indice=True)
     i_pags1, i_año = ((i_pags0 + 1, i_pags0 + 2)
                       if lineas[i_pags0 + 2].startswith(',')
                       else (i_pags0 + 2, i_pags0 + 3))
@@ -376,12 +384,48 @@ def _parsear_pags_año(lineas, prefijo_pags0, año_vacio):
     return pags, año
 
 
-def parsear_demas_trabajos(soup):
-    return []
+def extraer_demas_trabajos(soup):
+    """
+    <td>
+        <a name="demas_trabajos"></a>
+        <table>
+            ...
+            <blockquote>
+                HECTOR FABIO TORRES CARDONA,
+                ...
+            </blockquote>
+        ...
+    """
+    trabajos = []
+    for bq in (soup.find(attrs={'name': 'demas_trabajos'})
+                   .parent
+                   .find_all('blockquote')):
+        lineas = _split_strip_lines(bq.get_text())
+        """lineas = [
+            'HECTOR FABIO TORRES CARDONA,',
+            'CD: ARS NOVA',
+            '. En: Colombia,',
+            ',2002,',
+            'finalidad: Difusión del trabajo en cuerdas típicas...',
+            'Areas:',
+            'Humanidades -- Arte -- Teatro, dramaturgia o artes...,',
+            'Sectores:',
+            'Edición, impresión, reproducción y grabación industriales...'
+        ]"""
+        i_pais, pais = _extraer_campo(lineas, prefijo='. En:', con_indice=True)
+        str_año = lineas[i_pais + 1].strip(',')
+        trabajos.append({
+            # TODO: dejar como lista?
+            'autores': ''.join(lineas[: i_pais - 1]).rstrip(','),
+            'titulo': lineas[i_pais - 1],
+            'pais': pais,
+            'año': int(str_año) if str_año else None,
+            'finalidad': _extraer_campo(lineas, prefijo='finalidad:'),
+        })
+    return trabajos
 
 
-def parsear_textos_pubs_no_cientificas(soup):
-    textos = []
+def extraer_textos_pubs_no_cientificas(soup):
     """
     <table>
         <tr><td><h3 id="textos"></h3></td></tr>
@@ -392,12 +436,14 @@ def parsear_textos_pubs_no_cientificas(soup):
         </blockquote></td></tr>
         ...
     """
-    for bq in (soup.find('h3', id='textos')
-                   .find_parent('table')
-                   .find_all('blockquote')):
+    h3_textos = soup.find('h3', id='textos')
+    if h3_textos is None:
+        return []
+    textos = []
+    for bq in (h3_textos.find_parent('table')
+                        .find_all('blockquote')):
         lineas = _split_strip_lines(bq.get_text())
-        """
-        lineas = [
+        """lineas = [
             'FELIPE CESAR LONDONO LOPEZ,',
             '"Diseño, arte y tecnología"',
             'En: Colombia.',
@@ -415,26 +461,201 @@ def parsear_textos_pubs_no_cientificas(soup):
             'Areas:',
             'Humanidades -- Otras Humanidades -- Otras Humanidades,'
         ]"""
-        i_titulo, titulo = _parsear_campo(lineas, prefijo='"', con_indice=True)
-        i_pais, pais = _parsear_campo(lineas, prefijo='En: ', con_indice=True)
-        i_pags0, pags0 = _parsear_campo(lineas, prefijo='p.', con_indice=True)
+        i_titulo, titulo = _extraer_campo(lineas, prefijo='"', con_indice=True)
+        i_pais, pais = _extraer_campo(lineas, prefijo='En:', con_indice=True)
+        revista = (lineas[i_pais + 2]
+                   if not lineas[i_pais + 2].startswith('ISSN:') else None)
+        i_pags0, pags0 = _extraer_campo(lineas, prefijo='p.', con_indice=True)
         textos.append({
             # TODO: dejar como lista?
             'autores': ''.join(lineas[:i_titulo]).rstrip(','),
             'titulo': titulo.strip('"'),
-            'pais': pais.rstrip('.'),
+            'pais': pais,
             'año': int(lineas[i_pais + 1].rstrip('.')),
-            'revista': lineas[i_pais + 2].rstrip('.'),
-            'ISSN': _parsear_campo(lineas, prefijo='ISSN:'),
+            'revista': revista.rstrip('.') or None,
+            'ISSN': _extraer_campo(lineas, prefijo='ISSN:'),
             'paginas': f'{pags0 or ""} - {lineas[i_pags0 + 1].lstrip("- ")}',
             # TODO: convertir a número?
-            'version': _parsear_campo(lineas, prefijo='v.'),
+            'version': _extraer_campo(lineas, prefijo='v.'),
         })
     return textos
 
 
+def extraer_softwares(soup):
+    softwares = []
+    """
+    <a name="software"></a>
+    <table>
+        ...
+        <blockquote>
+            FELIPE CESAR LONDONO LOPEZ,
+            ...
+        </blockquote>
+        ...
+    """
+    for bq in (soup.find(attrs={'name': 'software'})
+                   .find_next_sibling('table')
+                   .find_all('blockquote')):
+        lineas = _split_strip_lines(bq.get_text())
+        """lineas = [
+            'FELIPE CESAR LONDONO LOPEZ,',
+            'MARIO HUMBERTO VALENCIA G,',
+            'Diseño Digital. Metodologías, aplicación y... .,',
+            'Nombre comercial: ,',
+            'contrato/registro: ,',
+            '. En: Colombia,',
+            ',2004,',
+            '.plataforma: CD ROM PC,',
+            '.ambiente: PC,',
+            'Palabras:',
+            'Diseño Digital,',
+            'Interacción,',
+            'Tecnologías Multimedia,',
+            'Areas:',
+            'Ciencias Sociales -- Ciencias de la Educación...',
+            'Ciencias Naturales -- Computación y Ciencias de la...',
+            'Sectores:',
+            'Educación,'
+        ]"""
+        i_nombre_com, _ = _extraer_campo(
+            lineas, prefijo='Nombre comercial:', con_indice=True)
+        i_pais, pais = _extraer_campo(lineas, prefijo='. En:', con_indice=True)
+        str_año = lineas[i_pais + 1].strip(',')
+        softwares.append({
+            # TODO: dejar como lista?
+            'autores': ''.join(lineas[: i_nombre_com - 1]).rstrip(','),
+            'nombre': lineas[i_nombre_com - 1].rstrip('.,'),
+            'registro': _extraer_campo(lineas, prefijo='contrato/registro:'),
+            'pais': pais,
+            'año': int(str_año) if str_año else None,
+            'plataforma': _extraer_campo(lineas, prefijo='.plataforma:'),
+        })
+    return softwares
+
+
+def extraer_obras_productos(soup):
+    """
+    <table id="obras_productos">
+        ...
+        <blockquote>
+            <i>Nombre del producto:</i>
+            Perdon,
+            <i>Disciplina:</i>
+            Humanidades -- Arte -- Música y musicología,
+            <i>Fecha de creación:</i>
+            Mayo de 2018
+            <br />
+            <h5>INSTANCIAS DE VALORACIÓN DE LA OBRA</h5>
+            <ul>
+                <li>
+                    Nombre del espacio o evento:
+                    Festival Internacional de la Imagen,
+                    Fecha de presentación:
+                    2019-05-09,
+                    Entidad convocante 1:
+                    UNIVERSIDAD DE CALDAS
+                </li>
+                <li>
+                    Nombre del espacio o evento:
+                    Festival Internacional de la Imagen,
+                    Fecha de presentación:
+                    2019-05-09,
+                    Entidad convocante 1:
+                    Universidad de Caldas
+                </li>
+            </ul>
+    </blockquote>
+    """
+    table = soup.find('table', id='obras_productos')
+    if table is None:
+        return []
+    productos = []
+    for bq in table.find_all('blockquote'):
+        i_nombre = bq.find('i', string='Nombre del producto:')
+        i_disciplina = bq.find('i', string='Disciplina:')
+        i_fecha = bq.find('i', string='Fecha de creación:')
+        nombre_instancia, fecha_instancia, entidad_instancia = (
+            _extraer_nombre_fecha_entidad_instancia_producto(bq))
+        productos.append({
+            'nombre': i_nombre.next_sibling.strip().rstrip(','),
+            'discplina': i_disciplina.next_sibling.strip().rstrip(','),
+            'fecha': i_fecha.next_sibling.strip(),
+            'nombre_instancia': nombre_instancia,
+            'fecha_instancia': fecha_instancia,
+            'entidad_instancia': entidad_instancia,
+        })
+    return productos
+
+
+def _extraer_nombre_fecha_entidad_instancia_producto(bq):
+    li_instancia = bq.find('li')
+    lineas = _split_strip_lines(li_instancia.get_text())
+    """lineas = [
+        0: 'Nombre del espacio o evento:',
+        1: 'Festival Internacional de la Imagen,',
+        2: 'Fecha de presentación:',
+        3: '2019-05-09,',
+        4: 'Entidad convocante 1:',
+        5?: 'UNIVERSIDAD DE CALDAS'
+    ]"""
+    nombre = lineas[1].rstrip(',') or None
+    fecha = lineas[3].rstrip(',') or None
+    entidad = lineas[5] if len(lineas) >= 6 else None
+    return nombre, fecha, entidad
+
+
+def extraer_proyectos(soup):
+    """
+    <table>
+        ...
+        <td id="proyectos">
+        ...
+        <blockquote>
+            <i>Tipo de proyecto:&nbsp;</i>Investigaci&oacute;n y
+            desarrollo&nbsp;<br>
+            DISEÑO DE UN ESPACIO PÚBLICO DIGITAL PARA LA GENERACIÓN...
+            DE
+            CONVIVENCIA EN GRUPOS MINORITARIOS EN ZONAS URBANAS...<br>
+            <i>Inicio:&nbsp;</i>Enero&nbsp;
+            2009
+            <i>Fin proyectado:&nbsp;</i>Junio&nbsp;
+            2010
+            <i>Duraci&oacute;n&nbsp;</i>18<br>
+            <b>Resumen</b>
+            <p class="test1">
+                ...<br>
+            </p>
+        </blockquote>
+        ...
+    """
+    proyectos = []
+    for bq in (soup.find('td', id='proyectos')
+                   .find_parent('table')
+                   .find_all('blockquote')):
+        i_tipo = bq.find('i', string='Tipo de proyecto:\xa0')
+        proyectos.append({
+            'tipo': i_tipo.next_sibling.rstrip(),
+            'titulo': (i_tipo.find_next_sibling('br').next_sibling
+                             .strip().rstrip('.')),
+            'periodo': _extraer_periodo_proyecto(bq),
+        })
+    return proyectos
+
+
+def _extraer_periodo_proyecto(bq):
+    rm_whitespace = lambda s: ' '.join(s.split())
+    i_inicio = bq.find('i', string='Inicio:\xa0')
+    inicio = rm_whitespace(i_inicio.next_sibling)
+    i_fin = (i_inicio.find_next_sibling('i', string='Fin:\xa0')
+             or i_inicio.find_next_sibling(
+                 'i', string=(lambda s: s.startswith('Fin'))))
+    fin = rm_whitespace(i_fin.next_sibling) if i_fin is not None else ''
+    return f'{inicio} - {fin}'
+
+
 if __name__ == '__main__':
     cods_rh = ['0000419109', '0000189758']
-    curriculums = {cod_rh: parsear(cod_rh) for cod_rh in cods_rh}
+    curriculums = {cod_rh: extraer_curriculum(cod_rh)
+                   for cod_rh in tqdm(cods_rh)}
     with open('curriculums.json', 'wt') as f:
         json.dump(curriculums, f)

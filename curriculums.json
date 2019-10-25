@@ -30,7 +30,7 @@
             "Primer puesto interpretaci\u00f3n instrumental,Festival Nal. Hato viejo Cotrafa - de 1995",
             "Primer puesto composici\u00f3n in\u00e9dita,Festival Nal. del pasillo colombiano - de 1999"
         ],
-        "eventos": [
+        "eventos_cientificos": [
             {
                 "nombre": "Congreso Internacional de Musicolog\u00eda, 200 a\u00f1os de M\u00fasica en Am\u00e9rica Latina y el Caribe",
                 "fecha": "2010-10-01",
@@ -213,8 +213,302 @@
                     "paginas": "175 - 186",
                     "a\u00f1o": 2015
                 }
-            ]
-        }
+            ],
+            "demas_trabajos": [
+                {
+                    "autores": "HECTOR FABIO TORRES CARDONA",
+                    "titulo": "CD: ENSAMBLE, Cuarteto instrumental",
+                    "pais": "Colombia",
+                    "a\u00f1o": 1996,
+                    "finalidad": "Difusi\u00f3n del trabajo sobre cuerdas t\u00edpicas Colombianas"
+                },
+                {
+                    "autores": "HECTOR FABIO TORRES CARDONA",
+                    "titulo": "CD. ENSAMBLE, Danza del cuervo",
+                    "pais": "Colombia",
+                    "a\u00f1o": 1997,
+                    "finalidad": "Difusi\u00f3n del trabajo sobre cuerdas t\u00edpicas colombianas"
+                },
+                {
+                    "autores": "HECTOR FABIO TORRES CARDONA",
+                    "titulo": "CD: CAFE, Cuerdas",
+                    "pais": "Colombia",
+                    "a\u00f1o": 1998,
+                    "finalidad": "Difusi\u00f3n del trabajo en cuerdas t\u00edpicas en formato de octeto instrumental"
+                },
+                {
+                    "autores": "HECTOR FABIO TORRES CARDONA",
+                    "titulo": "CD: ENSAMBLE Y CUERDAS",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2000,
+                    "finalidad": "Difusi\u00f3n del concierto para cuarteto t\u00edpico Colombiano y orquesta de cuerdas"
+                },
+                {
+                    "autores": "HECTOR FABIO TORRES CARDONA",
+                    "titulo": "CD: ARS NOVA",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2002,
+                    "finalidad": "Difusi\u00f3n del trabajo en cuerdas t\u00edpicas Colombianas en formato de septeto"
+                }
+            ],
+            "textos_pubs_no_cientificas": []
+        },
+        "softwares": [
+            {
+                "autores": "CESAR GERMAN CASTELLANOS DOMINGUEZ,HECTOR FABIO TORRES CARDONA,JUANA VALERIA HURTADO RINCON,VICTOR HUGO CASTRO LONDONO",
+                "nombre": "BRAINSCORE",
+                "registro": "1-2018-103504",
+                "pais": "Colombia",
+                "a\u00f1o": 2018,
+                "plataforma": "Python, Max/msp"
+            }
+        ],
+        "obras_productos": [
+            {
+                "nombre": "Perdon",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Mayo de 2018",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2019-05-09",
+                "entidad_instancia": "UNIVERSIDAD DE CALDAS"
+            },
+            {
+                "nombre": "Double",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Febrero de 2017",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Double",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Febrero de 2017",
+                "nombre_instancia": "ISEA",
+                "fecha_instancia": "2017-06-13",
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Interpolation of Brainscore",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Enero de 2017",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Interpolation of Brainscore",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Enero de 2017",
+                "nombre_instancia": "ISEA",
+                "fecha_instancia": "2017-06-13",
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Exilio",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Abril de 2016",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Exilio",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Abril de 2016",
+                "nombre_instancia": "Festival de la Imagen",
+                "fecha_instancia": "2016-05-11",
+                "entidad_instancia": "UNIVERSIDAD DE CALDAS"
+            },
+            {
+                "nombre": "Mirror",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Febrero de 2016",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Doppler",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Febrero de 2016",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2016-05-13",
+                "entidad_instancia": "Universidad de Caldas"
+            },
+            {
+                "nombre": "Missing",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Febrero de 2016",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2016-05-11",
+                "entidad_instancia": "Universidad de Caldas"
+            },
+            {
+                "nombre": "Motion",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Noviembre de 2015",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2016-05-11",
+                "entidad_instancia": "UNIVERSIDAD DE CALDAS"
+            },
+            {
+                "nombre": "Mirror",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Noviembre de 2015",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2016-05-12",
+                "entidad_instancia": "Universidad de Caldas"
+            },
+            {
+                "nombre": "Motion",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Noviembre de 2015",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Spectrum",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Agosto de 2015",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2016-05-11",
+                "entidad_instancia": "Universidad de Caldas"
+            },
+            {
+                "nombre": "Exilio",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Abril de 2015",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Spectrum",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Marzo de 2015",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Phase",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Enero de 2015",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2015-04-23",
+                "entidad_instancia": "UNIVERSIDAD DE CALDAS"
+            },
+            {
+                "nombre": "Missing",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Enero de 2015",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Circuit",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Marzo de 2014",
+                "nombre_instancia": null,
+                "fecha_instancia": null,
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Circuit",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Marzo de 2014",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2014-05-08",
+                "entidad_instancia": "UNIVERSIDAD DE CALDAS"
+            },
+            {
+                "nombre": "Dead End",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Marzo de 2014",
+                "nombre_instancia": "M\u00bfsica Contempor\u00bfnea en Colombia",
+                "fecha_instancia": "2014-04-27",
+                "entidad_instancia": null
+            },
+            {
+                "nombre": "Anima Mundi Est",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Enero de 2013",
+                "nombre_instancia": "Festival Internacional de la Imagen",
+                "fecha_instancia": "2014-05-05",
+                "entidad_instancia": "UNIVERSIDAD DE CALDAS"
+            },
+            {
+                "nombre": "Anima Mundi Est",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Enero de 2013",
+                "nombre_instancia": "Festival de la Imagen",
+                "fecha_instancia": "2014-05-05",
+                "entidad_instancia": "festival de la imagen"
+            },
+            {
+                "nombre": "Mikr\u00f3pera",
+                "discplina": "Humanidades -- Arte -- M\u00fasica y musicolog\u00eda",
+                "fecha": "Enero de 2011",
+                "nombre_instancia": "festival de la imagen",
+                "fecha_instancia": "2011-04-15",
+                "entidad_instancia": "festival de la imagen"
+            }
+        ],
+        "proyectos": [
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Brainscore: Sistema Compositivo, Gr\u00e1fico y Sonoro Creado a partir del Comportamiento Frecuencial de las Se\u00f1ales Cerebrales",
+                "periodo": "Mayo 2017 - Enero 2019"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Dise\u00f1o Sonoro y Musicalizaci\u00f3n de 10 videos institucionales",
+                "periodo": "Enero 2018 - Diciembre 2018"
+            },
+            {
+                "tipo": "Investigaci\u00f3n-Creaci\u00f3n",
+                "titulo": "Semi\u00f3tica y Sem\u00e1ntica de la Notaci\u00f3n Musical. Nuevas Fronteras",
+                "periodo": "Julio 2010 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Sinapsis, Composicio\u0301n Musical Basada en Sistemas Automatizados de Biofeedback y la Espacializacio\u0301n Utilizando interfaces HCI",
+                "periodo": "Marzo 2016 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "El Paradigma Metaf\u00f3rico en la Interface Cerebro - Ordenador para la Representaci\u00f3n Sonora",
+                "periodo": "Abril 2013 - Junio 2016"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Simulador IC. Un Escenario Transmedial de Pruebas para la Simulaci\u00f3n de Inteligencia colectiva",
+                "periodo": "Noviembre 2012 - Mayo 2014"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Semi\u00f3tica y Sem\u00e1ntica de la Notaci\u00f3n Musical. Nuevas Fronteras",
+                "periodo": "Julio 2010 - Enero 2012"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "\u00d3pera \"La Mar\u00eda\"",
+                "periodo": "Abril 2007 - Enero 2010"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "360 \u00bf AMBIENTE DE INTERACCI\u00d3N SEMI-INMERSIVO DE REALIDAD VIRTUAL",
+                "periodo": "Julio 2010 - Febrero 2012"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "\u00d3pera Expandida. De la Narrativa y el Dise\u00f1o Sonoro a la Exploraci\u00f3n Postmedial",
+                "periodo": "Julio 2009 - Junio 2011"
+            }
+        ]
     },
     "0000189758": {
         "formacion_academica": [
@@ -241,7 +535,7 @@
             "Primer Premio. Concurso Latinoamericano: Dise\u00f1o Imagen Corporativa, La Red,Red Latinoamericana de Productores Independientes de Arte Contempor\u00e1neo - de 1991",
             "Acogida del Grupo DICOVI a Joven Investigador COLCIENCIAS,Departamento Administrativo de Ciencia, Tecnolog\u00eda e Innovaci\u00f3n, Colciencias - de 2007"
         ],
-        "eventos": [
+        "eventos_cientificos": [
             {
                 "nombre": "V Encuentro BID de Centros Iberoamericanos de ense\u00f1anza de dise\u00f1o. Bienal Iberoamericana de Dise\u00f1o",
                 "fecha": "2013-11-27",
@@ -946,7 +1240,17 @@
         "publicaciones": {
             "libros": [
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ A",
+                    "titulo": "Paisajes Y Nuevos Territorios (En Red). Cartograf\u00edas E Interacciones En Entornos Visuales Y Virtuales",
+                    "pais": "Espa\u00f1a",
+                    "a\u00f1o": 2011,
+                    "editorial": "Anthropos Editorial",
+                    "ISBN": "978-84-15260-10-3",
+                    "version": null,
+                    "paginas": null
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ ALZATE",
                     "titulo": "Expresi\u00f3n Visual En Las Ciudades Del Bahareque",
                     "pais": "Colombia",
                     "a\u00f1o": 1994,
@@ -956,34 +1260,44 @@
                     "paginas": 110
                 },
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,WALTER CASTANEDA,GUILLERMO RENDON GARCIA,ADRIANA GOMEZ A",
-                    "titulo": "Patrones De Color. Interpretaci\u00f3n Visual De Los Valores Crom\u00e1tico Regionales En Caldas",
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Interfaces De Las Comunidades Virtuales",
+                    "pais": "Espa\u00f1a",
+                    "a\u00f1o": 2004,
+                    "editorial": "Universidad De Caldas",
+                    "ISBN": "846-8812-26-9",
+                    "version": "200",
+                    "paginas": 600
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO HUMBERTO VALENCIA GARCIA",
+                    "titulo": "Mertodologia Para La Creacion De Poryectos Interactivos",
                     "pais": "Colombia",
-                    "a\u00f1o": 2006,
-                    "editorial": "Centro Editorial Universidad De Caldas",
-                    "ISBN": "978-958-8319-07-0",
-                    "version": "0",
-                    "paginas": 216
+                    "a\u00f1o": 2004,
+                    "editorial": "Universidad De Caldas",
+                    "ISBN": "958-8231-24-8",
+                    "version": "200",
+                    "paginas": 300
                 },
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ A",
-                    "titulo": "Paisajes Y Nuevos Territorios (En Red). Cartograf\u00edas E Interacciones En Entornos Visuales Y Virtuales",
-                    "pais": "Espa\u00f1a",
-                    "a\u00f1o": 2011,
-                    "editorial": "Anthropos Editorial",
-                    "ISBN": "978-84-15260-10-3",
-                    "version": "1",
-                    "paginas": 268
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO HUMBERTO VALENCIA GARCIA",
+                    "titulo": "Dise\u00f1o Digital",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2004,
+                    "editorial": "Universidad De Caldas",
+                    "ISBN": "9588231256",
+                    "version": "200",
+                    "paginas": 1
                 },
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ A",
-                    "titulo": "Paisajes Y Nuevos Territorios (En Red). Cartograf\u00edas E Interacciones En Entornos Visuales Y Virtuales",
-                    "pais": "Espa\u00f1a",
-                    "a\u00f1o": 2011,
-                    "editorial": "Anthropos Editorial",
-                    "ISBN": "978-84-15260-10-3",
-                    "version": null,
-                    "paginas": null
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Interfaces De Las Comunidades Virtuales",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2005,
+                    "editorial": "Universidad De Caldas",
+                    "ISBN": "9588231396",
+                    "version": "300",
+                    "paginas": 618
                 },
                 {
                     "autores": "FELIPE CESAR LONDONO LOPEZ,GERMAN MAURICIO MEJIA RAMIREZ,CARLOS ALBERTO CUESTA IGLESIAS,YOLIMA SANCHEZ ROYO",
@@ -996,14 +1310,44 @@
                     "paginas": null
                 },
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo": "Interfaces De Las Comunidades Virtuales",
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ A",
+                    "titulo": "Paisajes Y Nuevos Territorios (En Red). Cartograf\u00edas E Interacciones En Entornos Visuales Y Virtuales",
                     "pais": "Espa\u00f1a",
-                    "a\u00f1o": 2004,
+                    "a\u00f1o": 2011,
+                    "editorial": "Anthropos Editorial",
+                    "ISBN": "978-84-15260-10-3",
+                    "version": "1",
+                    "paginas": 268
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO HUMBERTO VAALENCIA",
+                    "titulo": "Dise\u00f1o Digital",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2009,
                     "editorial": "Universidad De Caldas",
-                    "ISBN": "846-8812-26-9",
-                    "version": "200",
-                    "paginas": 600
+                    "ISBN": "9789588231259",
+                    "version": "0",
+                    "paginas": 135
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,WALTER CASTANEDA,GUILLERMO RENDON GARCIA,ADRIANA GOMEZ A",
+                    "titulo": "Patrones De Color. Interpretaci\u00f3n Visual De Los Valores Crom\u00e1tico Regionales En Caldas",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2006,
+                    "editorial": "Centro Editorial Universidad De Caldas",
+                    "ISBN": "978-958-8319-07-0",
+                    "version": "0",
+                    "paginas": 216
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO H VALENCIA",
+                    "titulo": "Diseno Digital Metodologoa Aplicacion Y Evaluacion De Proyectos Interactivos",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2006,
+                    "editorial": "Editorial Universidad De Caldas",
+                    "ISBN": "978-958-8231-72-3",
+                    "version": "1",
+                    "paginas": 268
                 },
                 {
                     "autores": "FELIPE CESAR LONDONO LOPEZ",
@@ -1046,57 +1390,7 @@
                     "paginas": 618
                 },
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO H VALENCIA",
-                    "titulo": "Diseno Digital Metodologoa Aplicacion Y Evaluacion De Proyectos Interactivos",
-                    "pais": "Colombia",
-                    "a\u00f1o": 2006,
-                    "editorial": "Editorial Universidad De Caldas",
-                    "ISBN": "978-958-8231-72-3",
-                    "version": "1",
-                    "paginas": 268
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO HUMBERTO VAALENCIA",
-                    "titulo": "Dise\u00f1o Digital",
-                    "pais": "Colombia",
-                    "a\u00f1o": 2009,
-                    "editorial": "Universidad De Caldas",
-                    "ISBN": "9789588231259",
-                    "version": "0",
-                    "paginas": 135
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO HUMBERTO VALENCIA GARCIA",
-                    "titulo": "Mertodologia Para La Creacion De Poryectos Interactivos",
-                    "pais": "Colombia",
-                    "a\u00f1o": 2004,
-                    "editorial": "Universidad De Caldas",
-                    "ISBN": "958-8231-24-8",
-                    "version": "200",
-                    "paginas": 300
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO HUMBERTO VALENCIA GARCIA",
-                    "titulo": "Dise\u00f1o Digital",
-                    "pais": "Colombia",
-                    "a\u00f1o": 2004,
-                    "editorial": "Universidad De Caldas",
-                    "ISBN": "9588231256",
-                    "version": "200",
-                    "paginas": 1
-                },
-                {
                     "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo": "Interfaces De Las Comunidades Virtuales",
-                    "pais": "Colombia",
-                    "a\u00f1o": 2005,
-                    "editorial": "Universidad De Caldas",
-                    "ISBN": "9588231396",
-                    "version": "300",
-                    "paginas": 618
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ ALZATE",
                     "titulo": "Expresi\u00f3n Visual En Las Ciudades Del Bahareque",
                     "pais": "Colombia",
                     "a\u00f1o": 1994,
@@ -1108,15 +1402,15 @@
             ],
             "capitulos_libros": [
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO H VALENCIA G",
-                    "titulo_capitulo": "Dise\u00f1o Digital",
-                    "titulo_libro": "\u00bfQu\u00e9 Es Dise\u00f1o Hoy? 1er Encuentro Nacional De Investigaci\u00f3n En Dise\u00f1o",
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo_capitulo": "Las escalas del territorio: Del sujeto al mundo, del \u00e1rea a la red",
+                    "titulo_libro": "Las Escalas Del Territorio: Del Sujeto Al Mundo, Del \u00c1rea A La Red.",
                     "pais": "Colombia",
-                    "ISBN": "958-9279-78-3",
-                    "editorial": "Universidad Icesi Departamento De Diseno",
-                    "version": "1",
-                    "paginas": " - 1",
-                    "a\u00f1o": 2004
+                    "ISBN": "978-958-58061-0-8",
+                    "editorial": "Fondo Editorial Universidad De Caldas",
+                    "version": null,
+                    "paginas": "23 - 39",
+                    "a\u00f1o": 2013
                 },
                 {
                     "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ A,MARIO H VALENCIA G",
@@ -1130,15 +1424,15 @@
                     "a\u00f1o": 2006
                 },
                 {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo_capitulo": "El medio es el dise\u00f1o audiovisual: una introducci\u00f3n",
-                    "titulo_libro": "El Medio Es El Dise\u00f1o Audiovisual",
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO H VALENCIA G",
+                    "titulo_capitulo": "Dise\u00f1o Digital",
+                    "titulo_libro": "\u00bfQu\u00e9 Es Dise\u00f1o Hoy? 1er Encuentro Nacional De Investigaci\u00f3n En Dise\u00f1o",
                     "pais": "Colombia",
-                    "ISBN": "978-958-8319-05-6",
-                    "editorial": "Centro Editorial U Caldas",
-                    "version": null,
-                    "paginas": "1 - 4",
-                    "a\u00f1o": 2007
+                    "ISBN": "958-9279-78-3",
+                    "editorial": "Universidad Icesi Departamento De Diseno",
+                    "version": "1",
+                    "paginas": " - 1",
+                    "a\u00f1o": 2004
                 },
                 {
                     "autores": "FELIPE CESAR LONDONO LOPEZ,ADRIANA GOMEZ ALZATE",
@@ -1175,61 +1469,6 @@
                 },
                 {
                     "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo_capitulo": "El color en la ciudad y en la arquitectura",
-                    "titulo_libro": "Patrones De Color. Interpretaci\u00f3n Visual De Los Valores Crom\u00e1tico Regionales En Caldas",
-                    "pais": "Colombia",
-                    "ISBN": "978-958-8319-07-0",
-                    "editorial": "Centro Editorial Universidad De Caldas",
-                    "version": "24",
-                    "paginas": "71 - 1",
-                    "a\u00f1o": 2007
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo_capitulo": "Las escalas del territorio: Del sujeto al mundo, del \u00e1rea a la red",
-                    "titulo_libro": "Las Escalas Del Territorio: Del Sujeto Al Mundo, Del \u00c1rea A La Red.",
-                    "pais": "Colombia",
-                    "ISBN": "978-958-58061-0-8",
-                    "editorial": "Fondo Editorial Universidad De Caldas",
-                    "version": null,
-                    "paginas": "23 - 39",
-                    "a\u00f1o": 2013
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo_capitulo": "Investigaci\u00f3n-Creaci\u00f3n en Colombia: procesos de transformaci\u00f3n social en regiones en conflicto.",
-                    "titulo_libro": "CORAL-Reflexionando la realidad contempor\u00e1nea",
-                    "pais": "Chile",
-                    "ISBN": "978-956-19-001-0",
-                    "editorial": "Universidad de Chile",
-                    "version": null,
-                    "paginas": "39 - 49",
-                    "a\u00f1o": 2017
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo_capitulo": "Ciudad y Nuevas Tecnolog\u00edas",
-                    "titulo_libro": "La Investigaci\u00f3n En Dise\u00f1o Gr\u00e1fico: Propuestas Y Aproximaciones. Memorias Del Primer Foro De La Red Acad\u00e9mica De Dise\u00f1o / Gr\u00e1fico Y Visual.",
-                    "pais": "Colombia",
-                    "ISBN": "978-958-701-435-8",
-                    "editorial": "Centro De Publicaciones Universidad Nacional De Colombia",
-                    "version": null,
-                    "paginas": "11 - 1",
-                    "a\u00f1o": 2006
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
-                    "titulo_capitulo": "Comunidades Virtuales y nuevos territorios en red",
-                    "titulo_libro": "Con-Juntos: Miradas Eurolatinoamericanas La Estudio Transversal Del Territorio",
-                    "pais": "Per\u00fa",
-                    "ISBN": "978-9972-623-54-7",
-                    "editorial": "IFEA - Instituto Franc\u00e9s de Estudios Andinos",
-                    "version": null,
-                    "paginas": "1 - ",
-                    "a\u00f1o": 2008
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ",
                     "titulo_capitulo": "Comunidades Virtuales y nuevos territorios en red",
                     "titulo_libro": "Territ\u00f3rio E Cultura: Inclus\u00e3o E Exclus\u00e3o Nas Din\u00e2micas Socioespaciais",
                     "pais": "Brasil",
@@ -1238,17 +1477,6 @@
                     "version": null,
                     "paginas": "00 - ",
                     "a\u00f1o": 2009
-                },
-                {
-                    "autores": "FELIPE CESAR LONDONO LOPEZ,GERMAN MAURICIO MEJIA RAMIREZ",
-                    "titulo_capitulo": "Social and Citizenship Competencies in a Multiuser Virtual Game",
-                    "titulo_libro": "Metaplasticity In Virtual Worlds: Aesthetics And Semantic Concepts",
-                    "pais": "Italia",
-                    "ISBN": "978-1-60960-077-8",
-                    "editorial": null,
-                    "version": null,
-                    "paginas": "266 - 280",
-                    "a\u00f1o": 2010
                 },
                 {
                     "autores": "FELIPE CESAR LONDONO LOPEZ",
@@ -1274,6 +1502,72 @@
                 },
                 {
                     "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo_capitulo": "Comunidades Virtuales y nuevos territorios en red",
+                    "titulo_libro": "Con-Juntos: Miradas Eurolatinoamericanas La Estudio Transversal Del Territorio",
+                    "pais": "Per\u00fa",
+                    "ISBN": "978-9972-623-54-7",
+                    "editorial": "IFEA - Instituto Franc\u00e9s de Estudios Andinos",
+                    "version": null,
+                    "paginas": "1 - ",
+                    "a\u00f1o": 2008
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ,GERMAN MAURICIO MEJIA RAMIREZ",
+                    "titulo_capitulo": "Social and Citizenship Competencies in a Multiuser Virtual Game",
+                    "titulo_libro": "Metaplasticity In Virtual Worlds: Aesthetics And Semantic Concepts",
+                    "pais": "Italia",
+                    "ISBN": "978-1-60960-077-8",
+                    "editorial": null,
+                    "version": null,
+                    "paginas": "266 - 280",
+                    "a\u00f1o": 2010
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo_capitulo": "El medio es el dise\u00f1o audiovisual: una introducci\u00f3n",
+                    "titulo_libro": "El Medio Es El Dise\u00f1o Audiovisual",
+                    "pais": "Colombia",
+                    "ISBN": "978-958-8319-05-6",
+                    "editorial": "Centro Editorial U Caldas",
+                    "version": null,
+                    "paginas": "1 - 4",
+                    "a\u00f1o": 2007
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo_capitulo": "El color en la ciudad y en la arquitectura",
+                    "titulo_libro": "Patrones De Color. Interpretaci\u00f3n Visual De Los Valores Crom\u00e1tico Regionales En Caldas",
+                    "pais": "Colombia",
+                    "ISBN": "978-958-8319-07-0",
+                    "editorial": "Centro Editorial Universidad De Caldas",
+                    "version": "24",
+                    "paginas": "71 - 1",
+                    "a\u00f1o": 2007
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo_capitulo": "Ciudad y Nuevas Tecnolog\u00edas",
+                    "titulo_libro": "La Investigaci\u00f3n En Dise\u00f1o Gr\u00e1fico: Propuestas Y Aproximaciones. Memorias Del Primer Foro De La Red Acad\u00e9mica De Dise\u00f1o / Gr\u00e1fico Y Visual.",
+                    "pais": "Colombia",
+                    "ISBN": "978-958-701-435-8",
+                    "editorial": "Centro De Publicaciones Universidad Nacional De Colombia",
+                    "version": null,
+                    "paginas": "11 - 1",
+                    "a\u00f1o": 2006
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo_capitulo": "Investigaci\u00f3n-Creaci\u00f3n en Colombia: procesos de transformaci\u00f3n social en regiones en conflicto.",
+                    "titulo_libro": "CORAL-Reflexionando la realidad contempor\u00e1nea",
+                    "pais": "Chile",
+                    "ISBN": "978-956-19-001-0",
+                    "editorial": "Universidad de Chile",
+                    "version": null,
+                    "paginas": "39 - 49",
+                    "a\u00f1o": 2017
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
                     "titulo_capitulo": "Entornos Visuales Interactivos",
                     "titulo_libro": ". En: Espa\u00f1a",
                     "pais": "Espa\u00f1a",
@@ -1283,7 +1577,288 @@
                     "paginas": "47 - 4450",
                     "a\u00f1o": 1999
                 }
+            ],
+            "demas_trabajos": [],
+            "textos_pubs_no_cientificas": [
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Media Art, Redes y Participaci\u00f3n.",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2010,
+                    "revista": "Revista Errata",
+                    "ISSN": "2145-6399",
+                    "paginas": "86 - 91",
+                    "version": "03"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Producci\u00f3n Art\u00edstica y Nuevas Tecnolog\u00edas.",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2010,
+                    "revista": "Revista Errata",
+                    "ISSN": "2145-6399",
+                    "paginas": "92 - 118",
+                    "version": "03"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Posibles rutas para un nuevo cine en Colombia",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2008,
+                    "revista": "Cuadernos De Cine Colombiano- Nueva \u00c9poca",
+                    "ISSN": "1692-6609",
+                    "paginas": "N/A - N/A",
+                    "version": "12"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "La creaci\u00f3n audiovisual y el Media Art.",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2008,
+                    "revista": "Cuadernos De Cine Colombiano- Nueva \u00c9poca",
+                    "ISSN": "1692-6609",
+                    "paginas": "N/A - N/A",
+                    "version": "12"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Dise\u00f1o, arte y tecnolog\u00eda",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2010,
+                    "revista": "Facultad Para Educar",
+                    "ISSN": "1794-9858",
+                    "paginas": "4 - 9",
+                    "version": "18"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Dise\u00f1o, el arte y la tecnolog\u00eda en Colombia",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2008,
+                    "revista": "El Niuton",
+                    "ISSN": "1909-504X",
+                    "paginas": "87 - 89",
+                    "version": "1"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "El Cinema L\u00edquido del Ciberespacio",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2000,
+                    "revista": "Cinemateca",
+                    "ISSN": "0124-6011",
+                    "paginas": "46 - 51",
+                    "version": "10"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Interactividad y participaci\u00f3n Ciudadana",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2004,
+                    "revista": null,
+                    "ISSN": null,
+                    "paginas": " - ",
+                    "version": null
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "El cine y la tecnolog\u00eda digital",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2000,
+                    "revista": "Cinemateca",
+                    "ISSN": "0124-6011",
+                    "paginas": "46 - 51",
+                    "version": "11"
+                },
+                {
+                    "autores": "FELIPE CESAR LONDONO LOPEZ",
+                    "titulo": "Revista KEPES. N\u00ba 1. Ciudad y Nuevas Tecnolog\u00edas",
+                    "pais": "Colombia",
+                    "a\u00f1o": 2004,
+                    "revista": "Kepes",
+                    "ISSN": "1794-7111",
+                    "paginas": "45 - 59",
+                    "version": "1"
+                }
             ]
-        }
+        },
+        "softwares": [
+            {
+                "autores": "FELIPE CESAR LONDONO LOPEZ,MARIO HUMBERTO VALENCIA G",
+                "nombre": "Dise\u00f1o Digital. Metodolog\u00edas, aplicaci\u00f3n y evaluaci\u00f3n de proyectos interactivos",
+                "registro": null,
+                "pais": "Colombia",
+                "a\u00f1o": 2004,
+                "plataforma": "CD ROM PC"
+            }
+        ],
+        "obras_productos": [],
+        "proyectos": [
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "DISE\u00d1O DE UN ESPACIO P\u00daBLICO DIGITAL PARA LA GENERACI\u00d3N DE PR\u00c1CTICAS DE CONVIVENCIA EN GRUPOS MINORITARIOS EN ZONAS URBANAS EN COLOMBIA",
+                "periodo": "Enero 2009 - Junio 2010"
+            },
+            {
+                "tipo": "Extensi\u00f3n y responsabilidad social CTI",
+                "titulo": "Programas de formaci\u00f3n a distancia con sistemas intearctivos",
+                "periodo": "Enero 1997 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n, desarrollo e Innovaci\u00f3n",
+                "titulo": "Promoci\u00f3n Cient\u00edfica y Tecnol\u00f3gica del Bamb\u00fa y la Madera",
+                "periodo": "Enero 1987 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Gu\u00eda de buenas pr\u00e1cticas de calidad internacional para la industria de animaci\u00f3n digital identificadas y documentadas como referentes para la empresa colombiana",
+                "periodo": "Enero 2014 - Junio 2014"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "DISE\u00d1O Y ELABORACI\u00d3N DE MATERIALES DID\u00c1CTICOS  MULTIMEDIA EN LA  EDUCACI\u00d3N SUPERIOR",
+                "periodo": "Enero 2002 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Expresi\u00f3n Visual en las Ciudades del Bahareque",
+                "periodo": "Enero 1986 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "El Mundo del Dise\u00f1o Visual",
+                "periodo": "Enero 1992 - Enero 1997"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Patrones de Color en Caldas. Interpretaci\u00f3n visual de los valores crom\u00e1ticos regionales",
+                "periodo": "Enero 1997 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Dise\u00f1o Digital. Metodolog\u00edas, aplicaci\u00f3n y evaluaci\u00f3n de proyectos interactivos",
+                "periodo": "Enero 2002 - Enero 2004"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Interacci\u00f3n, Espacio P\u00fablico y Nuevas Tecnolog\u00edas",
+                "periodo": "Enero 2003 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Media Lab",
+                "periodo": "Enero 2003 - "
+            },
+            {
+                "tipo": "Extensi\u00f3n y responsabilidad social CTI",
+                "titulo": "Escenarios Digitales",
+                "periodo": "Enero 2003 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Interficies de las Comunidades Virtuales",
+                "periodo": "Enero 2000 - Enero 2002"
+            },
+            {
+                "tipo": "Investigaci\u00f3n, desarrollo e Innovaci\u00f3n",
+                "titulo": "MAESTR\u00cdA EN DISE\u00d1O Y CREACI\u00d3N INTERACTIVA. Formaci\u00f3n especializada para el sector cinematogr\u00e1fico",
+                "periodo": "Enero 2005 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Videojuegos, Dise\u00f1o y Ciudadan\u00eda. Creaci\u00f3n de Videojuego como Estrategia para el Aprendizaje en Competencias Ciudadanas",
+                "periodo": "Enero 2008 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n, desarrollo e Innovaci\u00f3n",
+                "titulo": "Convocatoria nacional. apoyo a la creaci\u00f3n de Doctorados a partir de Maestr\u00edas consolidadas",
+                "periodo": "Enero 2008 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Canto Electroacu\u0301stico - Aves latinoamericanas en una creaci\u00f3n colaborativa",
+                "periodo": "Enero 2012 - Junio 2012"
+            },
+            {
+                "tipo": "Extensi\u00f3n y responsabilidad social CTI",
+                "titulo": "LASO Laboratorios de Emprendimiento Cultural en clave digital",
+                "periodo": "Junio 2014 - Diciembre 2014"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "La Relaci\u00f3n Pedag\u00f3gica en Ambientes Virtuales de Aprendizajes Urbanos y Rurales",
+                "periodo": "Enero 2008 - Enero 2009"
+            },
+            {
+                "tipo": "Extensi\u00f3n y responsabilidad social CTI",
+                "titulo": "ViveLab Manizales",
+                "periodo": "Enero 2013 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "CLUSTERLAB - PLATAFORMA VIRTUAL PARA LAS INDUSTRIAS CREATIVAS DEL EJE  CAFETERO",
+                "periodo": "Enero 2012 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Programa radial LA CASA. Una propuesta para la did\u00e1ctica de la arquitectura a  partir del uso de la radio",
+                "periodo": "Enero 2010 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Micromundos Interactivos para el aprendizaje de ni\u00f1os que asisten a Telecentros  Comunitarios ubicados en \u00e1reas rurales de Manizales",
+                "periodo": "Enero 2011 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Guadua y Madera aplicadas a NuevasTecnologias de Vivienda en Caldas",
+                "periodo": "Enero 1984 - Enero 1985"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Micromundos Interactivos para el aprendizaje de ni\u00f1os que asisten a Telecentros  Comunitarios ubicados en \u00e1reas rurales de Manizales",
+                "periodo": "Enero 2011 - "
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Caracterizaci\u00f3n del emprendedor y el empresario Cultural. An\u00e1lisis de acceso a la gesti\u00f3n y la destinaci\u00f3n de los recursos financieros",
+                "periodo": "Enero 2012 - Diciembre 2012"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Guadua y Madera aplicadas a NuevasTecnologias de Vivienda en Caldas",
+                "periodo": "Enero 1984 - Enero 1985"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "CANAL TEMPORAL. Significados y representaciones sobre derechos humanos y diversidades en grupos minoritarios urbanizados de Colombia, a trav\u00e9s del dise\u00f1o de un espacio p\u00fablico digital para la generaci\u00f3n de pr\u00e1cticas de convivencia",
+                "periodo": "Enero 2009 - Diciembre 2009"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "TECNOLOG\u00cdA Y NUEVOS MERCADOS PARA EL EMPRENDIMIENTO CULTURAL",
+                "periodo": "Enero 2013 - Diciembre 2013"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Fomento a la creaci\u00f3n del CL\u00daSTER CULTURAL DEL EJE CAFETERO. Con \u00e9nfasis en el sector de contenidos digitales",
+                "periodo": "Diciembre 2012 - Agosto 2013"
+            },
+            {
+                "tipo": "Investigaci\u00f3n, desarrollo e Innovaci\u00f3n",
+                "titulo": "Apropiaci\u00f3n de Tics en Bibliotecas, Basados en Entornos de Videojuegos",
+                "periodo": "Octubre 2011 - Abril 2013"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Emprendimiento Cultural en Colombia Visi\u00f3n y gesti\u00f3n de la empresa y los emprendedores culturales a partir de fuentes de financiaci\u00f3n de las industrias creativas",
+                "periodo": "Junio 2012 - Junio 2014"
+            },
+            {
+                "tipo": "Investigaci\u00f3n y desarrollo",
+                "titulo": "Caracterizaci\u00f3n de Fuentes de Financiamiento para empresas culturales en el \u00e1mbito p\u00fablico y privado nacional e internacional",
+                "periodo": "Junio 2011 - Diciembre 2011"
+            }
+        ]
     }
 }
