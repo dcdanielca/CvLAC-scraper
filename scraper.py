@@ -1,4 +1,5 @@
 import json
+import sys
 from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
@@ -12,14 +13,17 @@ except ImportError:
 def extraer_curriculum(cod_rh):
     url = f'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh={cod_rh}'
     with urlopen(url) as respuesta:
-        # TODO: usar un parser más rápido
+        # Se podría usar un parser más rápido:
         soup = BeautifulSoup(respuesta, 'html.parser')
         return {
             'formacion_academica': extraer_formacion_academica(soup),
             'reconocimientos': extraer_reconocimientos(soup),
             'eventos_cientificos': extraer_eventos_cientificos(soup),
             'articulos': extraer_articulos(soup),
-            'publicaciones': extraer_publicaciones(soup),
+            'libros': extraer_libros(soup),
+            'capitulos_libros': extraer_capitulos_libros(soup),
+            'demas_trabajos': extraer_demas_trabajos(soup),
+            'textos_pubs_no_cientificas': extraer_textos_pubs_no_cientificas(soup),
             'softwares': extraer_softwares(soup),
             'obras_productos': extraer_obras_productos(soup),
             'proyectos': extraer_proyectos(soup),
@@ -43,10 +47,11 @@ def extraer_formacion_academica(soup):
         </td>
         ...
     """
+    table = _find_table_next_to_tag(soup, attrs={'name': 'formacion_acad'})
+    if table is None:
+        return []
     formacion_acad = []
-    for b in (soup.find(attrs={'name': 'formacion_acad'})
-                  .find_next_sibling('table')
-                  .find_all('b')):
+    for b in table.find_all('b'):
         strs = list(b.parent.stripped_strings)
         """strs = [
             0: 'Doctorado',
@@ -54,14 +59,24 @@ def extraer_formacion_academica(soup):
             2: 'Doctorado en Diseño y Creación',
             3: 'Juliode2011 - Agostode 2017',
             4?: 'Interfaz Cerebro Ordenador para la Creación a...',
+        ] | [
+            0: 'Secundario',
+            1: 'Instituto Nacional Los Fundadores',
+            2: 'Enerode1973 - de 1978'
         ]"""
-        formacion_acad.append({
-            'titulo': strs[2],
-            'institucion': strs[1],
-            'periodo': strs[3],
-            'trabajo_grado': strs[4] if len(strs) >= 5 else None,
-        })
+        if len(strs) != 3:  # nos interesan son los títulos de edu superior
+            formacion_acad.append({
+                'titulo': strs[2],
+                'institucion': strs[1],
+                'periodo': strs[3],
+                'trabajo_grado': strs[4] if len(strs) >= 5 else None,
+            })
     return formacion_acad
+
+
+def _find_table_next_to_tag(soup, **kwargs):
+    tag = soup.find(**kwargs)
+    return None if tag is None else tag.find_next_sibling('table')
 
 
 def extraer_reconocimientos(soup):
@@ -72,10 +87,11 @@ def extraer_reconocimientos(soup):
         <tr><td><li>Primer puesto conjunto...<li></td></tr>
         ...
     """
-    return [li.get_text() for li in (soup.find('h3', string='Reconocimientos')
-                                         .find_parent('table')
-                                         .find_all('li'))]
-
+    e_reconocimientos = soup.find('h3', string='Reconocimientos')
+    if e_reconocimientos is None:
+        return []
+    return [li.get_text() for li in (
+               e_reconocimientos.find_parent('table').find_all('li'))]
 
 def extraer_eventos_cientificos(soup):
     """
@@ -124,10 +140,11 @@ def extraer_eventos_cientificos(soup):
         </table>
         ...
     """
+    table = _find_table_next_to_tag(soup, attrs={'name': 'evento'})
+    if table is None:
+        return []
     eventos = []
-    for table in (soup.find(attrs={'name': 'evento'})
-                      .find_next_sibling('table')
-                      .find_all('table')):
+    for table in table.find_all('table'):
         fecha, lugar = _extraer_fecha_lugar_evento(table)
         i_producto_asoc = table.find('i', string='Nombre del producto:')
         i_institucion_asoc = table.find('i',string='Nombre de la institución:')
@@ -136,7 +153,7 @@ def extraer_eventos_cientificos(soup):
                            .parent
                            .next_sibling
                            .strip(),
-            'fecha': fecha,  # de inicio, a veces hay también de fin
+            'fecha': fecha,  # de inicio; a veces hay también de fin
             'lugar' : lugar,
             'producto_asoc': i_producto_asoc.next_sibling.strip()
                              if i_producto_asoc else None,
@@ -154,10 +171,10 @@ def _extraer_fecha_lugar_evento(table):
     # fecha_lugar = 'Realizado el:2013-11-27 00:00:00.0, ...'
     #               ' 2013-11-29 00:00:00.0 ...'
     #               ' en MADRID \xa0 - Central de Diseño, Matadero Madrid.'
-    fecha = fecha_lugar[len(prefijo_fecha) : len(prefijo_fecha)
-                                             + len('AAAA-MM-DD')]
+    fecha = fecha_lugar[
+        len(prefijo_fecha) : len(prefijo_fecha) + len('AAAA-MM-DD')]
     lugar = (fecha_lugar[fecha_lugar.index(' en ') + len(' en ') :]
-                        .replace(' \xa0', ''))
+                 .replace(' \xa0', ''))
     return (fecha, lugar) if lugar != ' -' else (fecha, None)
 
 
@@ -174,10 +191,11 @@ def extraer_articulos(soup):
         <blockquote>
             ...
     """
+    table = _find_table_next_to_tag(soup, attrs={'name': 'articulos'})
+    if table is None:
+        return []
     articulos = []
-    for bq in (soup.find(attrs={'name': 'articulos'})
-                   .find_next_sibling('table')
-                   .find_all('blockquote')):
+    for bq in table.find_all('blockquote'):
         lineas = _split_strip_lines(bq.get_text())
         """lineas = [
             'FELIPE CESAR LONDONO LOPEZ,',
@@ -238,15 +256,6 @@ def _extraer_version_articulo(lineas):
         _extraer_campo(lineas, prefijo='fasc.') or 'N/A')
 
 
-def extraer_publicaciones(soup):
-    return {
-        'libros': extraer_libros(soup),
-        'capitulos_libros': extraer_capitulos_libros(soup),
-        'demas_trabajos': extraer_demas_trabajos(soup),
-        'textos_pubs_no_cientificas': extraer_textos_pubs_no_cientificas(soup),
-    }
-
-
 def extraer_libros(soup):
     """
     <a name="libros"></a>
@@ -260,10 +269,11 @@ def extraer_libros(soup):
         <blockquote>
             ...
     """
+    table = _find_table_next_to_tag(soup, attrs={'name': 'libros'})
+    if table is None:
+        return []
     libros = []
-    for bq in (soup.find(attrs={'name': 'libros'})
-                   .find_next_sibling('table')
-                   .find_all('blockquote')):
+    for bq in table.find_all('blockquote'):
         lineas = _split_strip_lines(bq.get_text())
         """lineas = [
             'HECTOR FABIO TORRES CARDONA,',
@@ -314,10 +324,11 @@ def extraer_capitulos_libros(soup):
         <blockquote>
             ...
     """
+    table = _find_table_next_to_tag(soup, attrs={'name': 'capitulos'})
+    if table is None:
+        return []
     capitulos = []
-    for bq in (soup.find(attrs={'name': 'capitulos'})
-                   .find_next_sibling('table')
-                   .find_all('blockquote')):
+    for bq in table.find_all('blockquote'):
         lineas = _split_strip_lines(bq.get_text())
         """lineas = [
             'Tipo: Otro capítulo de libro publicado',
@@ -396,8 +407,11 @@ def extraer_demas_trabajos(soup):
             </blockquote>
         ...
     """
+    e_trabajos = soup.find(attrs={'name': 'demas_trabajos'})
+    if e_trabajos is None:
+        return []
     trabajos = []
-    for bq in (soup.find(attrs={'name': 'demas_trabajos'})
+    for bq in (e_trabajos
                    .parent
                    .find_all('blockquote')):
         lineas = _split_strip_lines(bq.get_text())
@@ -436,12 +450,13 @@ def extraer_textos_pubs_no_cientificas(soup):
         </blockquote></td></tr>
         ...
     """
-    h3_textos = soup.find('h3', id='textos')
-    if h3_textos is None:
+    e_textos = soup.find(id='textos')
+    if e_textos is None:
         return []
     textos = []
-    for bq in (h3_textos.find_parent('table')
-                        .find_all('blockquote')):
+    for bq in (e_textos
+                   .find_parent('table')
+                   .find_all('blockquote')):
         lineas = _split_strip_lines(bq.get_text())
         """lineas = [
             'FELIPE CESAR LONDONO LOPEZ,',
@@ -482,7 +497,6 @@ def extraer_textos_pubs_no_cientificas(soup):
 
 
 def extraer_softwares(soup):
-    softwares = []
     """
     <a name="software"></a>
     <table>
@@ -493,9 +507,11 @@ def extraer_softwares(soup):
         </blockquote>
         ...
     """
-    for bq in (soup.find(attrs={'name': 'software'})
-                   .find_next_sibling('table')
-                   .find_all('blockquote')):
+    table = _find_table_next_to_tag(soup, attrs={'name': 'software'})
+    if table is None:
+        return []
+    softwares = []
+    for bq in table.find_all('blockquote'):
         lineas = _split_strip_lines(bq.get_text())
         """lineas = [
             'FELIPE CESAR LONDONO LOPEZ,',
@@ -566,11 +582,11 @@ def extraer_obras_productos(soup):
             </ul>
     </blockquote>
     """
-    table = soup.find('table', id='obras_productos')
-    if table is None:
+    e_obras_productos = soup.find(id='obras_productos')
+    if e_obras_productos is None:
         return []
     productos = []
-    for bq in table.find_all('blockquote'):
+    for bq in e_obras_productos.find_all('blockquote'):
         i_nombre = bq.find('i', string='Nombre del producto:')
         i_disciplina = bq.find('i', string='Disciplina:')
         i_fecha = bq.find('i', string='Fecha de creación:')
@@ -628,10 +644,11 @@ def extraer_proyectos(soup):
         </blockquote>
         ...
     """
+    table = _find_table_next_to_tag(soup, id='proyectos')
+    if table is None:
+        return []
     proyectos = []
-    for bq in (soup.find('td', id='proyectos')
-                   .find_parent('table')
-                   .find_all('blockquote')):
+    for bq in table.find_all('blockquote'):
         i_tipo = bq.find('i', string='Tipo de proyecto:\xa0')
         proyectos.append({
             'tipo': i_tipo.next_sibling.rstrip(),
@@ -654,8 +671,15 @@ def _extraer_periodo_proyecto(bq):
 
 
 if __name__ == '__main__':
-    cods_rh = ['0000419109', '0000189758']
-    curriculums = {cod_rh: extraer_curriculum(cod_rh)
-                   for cod_rh in tqdm(cods_rh)}
-    with open('curriculums.json', 'wt') as f:
-        json.dump(curriculums, f)
+    if len(sys.argv) != 3:
+        print('Usage: python scraper.py <cods_rh_infile> <json_outfile>')
+        print(f'  {"<cods_rh_infile>":18}árchivo con cods_rh de los investigadores en cada línea')
+        print(f'  {"<json_outfile>":18}árchivo en el que se escribirá el json resultante')
+    else:
+        cods_rh_infile, json_outfile = sys.argv[1:]
+        with open(cods_rh_infile) as f:
+            cods_rh = [linea.strip() for linea in f if linea]
+        curriculums = {cod_rh: extraer_curriculum(cod_rh)
+                       for cod_rh in tqdm(cods_rh)}
+        with open(json_outfile, 'wt') as f:
+            json.dump(curriculums, f)
