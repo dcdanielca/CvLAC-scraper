@@ -677,9 +677,9 @@ if __name__ == '__main__':
         print(f'  {"<json_outfile>":18}árchivo en el que se escribirá el json resultante')
     else:
         cods_rh_infile, json_outfile = sys.argv[1:]
-        with open(cods_rh_infile) as f:
-            cods_rh = [linea.strip() for linea in f if linea]
+        with open(cods_rh_infile) as archivo_cods_rh:
+            cods_rh = [linea.strip() for linea in archivo_cods_rh if linea]
         curriculums = {cod_rh: extraer_curriculum(cod_rh)
                        for cod_rh in tqdm(cods_rh)}
-        with open(json_outfile, 'wt') as f:
-            json.dump(curriculums, f)
+        with open(json_outfile, 'w') as archivo_salida_json:
+            json.dump(curriculums, archivo_salida_json)
